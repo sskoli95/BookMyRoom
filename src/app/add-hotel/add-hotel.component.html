@@ -1,0 +1,98 @@
+
+
+<div class="alert alert-primary" role="alert" *ngIf="hotelAdded">
+    {{hotel.name}} added successfully
+  </div>
+
+
+
+<div *ngIf="!hotelAdded"> 
+<div class="container"  >
+    <h1>Add Hotel Details</h1>
+    <form (ngSubmit)="addHotel()" ngNativeValidate >
+    
+        <fieldset class="form-group">
+        <label>HotelName*</label>
+        <input  type="text" class="form-control" name="hotelName" required="required" [(ngModel)]="hotel.name" />
+        </fieldset>
+
+
+
+        <fieldset class="form-group">
+            <label>Ameneties*</label>
+        <input  type="text" class="form-control" name="ameneties" required ="required"  placeholder="insert ameneties seperated by comma" [(ngModel)]="hotel.amenities"/>
+        
+        </fieldset>
+
+
+        <fieldset class="form-group">
+            <label>Description*</label>
+        <input  type="text" class="form-control" name="description"  required ="required" [(ngModel)]="hotel.description"/>
+        </fieldset>
+
+
+        <fieldset class="form-group">
+            <label>Location*</label>
+            <input type="text" class="form-control" name="location" required="required" [(ngModel)]="hotel.location" />
+        </fieldset>
+
+
+        <fieldset class="form-group"><input type="checkbox" required  /> Human Verification</fieldset>
+        
+        <fieldset class="form-group">
+            <button  class="btn btn-primary" type="submit">Add Hotel</button>
+        </fieldset>
+    </form>
+</div>
+
+</div>
+
+
+<div class="alert alert-primary" *ngIf="roomData">
+    Room Added successfully
+</div>
+
+<div *ngIf="hotelAdded" class="container">
+    <h2>Add Other  Details for {{newHotel.name}}</h2>
+    <form  (ngSubmit)="addRoom()" ngNativeValidate >
+    
+        <fieldset class="form-group">
+        <label>RoomType:</label>
+        <input  type="text" class="form-control" name="type" required="required" [(ngModel)] ="room.type" />
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Price:</label>
+            <input  type="number" class="form-control" name="price" required="required" [(ngModel)] ="room.price" />
+            </fieldset>
+            <fieldset class="form-group">
+                <label>units Available:</label>
+                <input  type="number" class="form-control" name="units Available" required="required" [(ngModel)] ="room.unitsAvailable" />
+                </fieldset>
+                  
+        <fieldset class="form-group">
+            <button  class="btn btn-primary" type="submit">Add Details</button>
+        </fieldset>
+    </form>
+   
+</div>
+
+<div *ngIf="roomData" class="container">
+<button class="btn btn-primary" (click)="getRoomData()">Show Added Room Types</button>
+
+<div  class="card-deck">
+<div class="card bg-light mb-3" display="inline-block"  style="max-width: 18rem;" *ngFor="let r of rooms">
+    <div class="card-header">RoomType: {{r.type}}</div>
+    <div class="card-body">
+      <h5 class="card-title">RoomPrice: {{r.price}}</h5>
+      <p class="card-text">Quantity: {{r.unitsAvailable}}</p>
+    </div>
+  </div>
+</div>
+</div>
+<!-- 
+<div *ngIf="hotelAdded">
+    <h1>
+        {{newHotel.hid}}
+    </h1>
+
+</div> -->

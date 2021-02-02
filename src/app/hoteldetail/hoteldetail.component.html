@@ -1,0 +1,128 @@
+
+<h4 *ngIf="bookingAdded">Room Booked Successfully</h4>
+
+
+
+
+
+<h3>{{hotel.name|titlecase}}</h3>
+<br>
+
+
+<div class="text-center">
+  <div class="spinner-border" role="status" *ngIf="!hotel">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+
+<div class="row">
+<div class="col">
+
+
+  <div class="card text-center" class="card bg-light  mb-3" >
+    <div class="card-body">
+      <h5 class="card-title">Location</h5>
+      <p class="card-text">{{hotel.location}}</p>
+      
+    </div>  
+  </div>
+
+</div>
+
+<div class="col">
+
+
+  <div  class="card text-center" class="card bg-light  mb-3">
+    <div class="card-body">
+      <h5 class="card-title">Description</h5>
+      <p class="card-text">{{hotel.description}}</p>
+      
+    </div>  
+  </div>
+
+</div>
+
+
+<div class="col">
+  <div class="card text-center" class="card bg-light  mb-3">
+    <div class="card-body">
+      <h5 class="card-title">Ameneties</h5>
+      <p class="card-text">{{hotel.amenities}}</p>
+    </div>  
+  </div>
+
+</div>
+
+</div>
+
+<br>
+<br>
+
+
+
+<form ngNativeValidate (ngSubmit)="onSubmit()">
+<div class="row">
+    <div class="col">
+      
+
+      
+  <div  class="card text-center" class="card bg-light  mb-3">
+    <div class="card-body">
+      <h5 class="card-title">CheckIn</h5>
+      <!-- <input type="date" class="form-control"  [ngModel]="date1 | date:'yyyy-MM-dd'" required="required" [ngModelOptions]="{standalone: true}"> -->
+      <input type="date"  class="form-control" #targetDate="ngModel" [ngModel]="date1 |date:'yyyy-MM-dd'" (ngModelChange)="date1=$event"  name="date1" required="required"/> 
+
+    </div>  
+  </div>
+
+
+    </div>
+    <div class="col">
+      
+      <div  class="card text-center" class="card bg-light  mb-3">
+        <div class="card-body">
+          <h5 class="card-title">Checkout</h5>
+          <input type="date" class="form-control" [ngModel]="date2 | date:'yyyy-MM-dd'" (ngModelChange)="date2=$event" required="required" [ngModelOptions]="{standalone: true}">
+        </div>  
+      </div>
+    </div>
+
+<!-- 
+    <form [formGroup]="countryForm">
+      <select formControlName="countryControl">
+        <option [value]="country" *ngFor="let country of countries">             {{country}}</option>
+      </select>
+     </form> -->
+     
+    <div class="col">
+      
+      <div  class="card text-center" class="card bg-light  mb-3">
+        <div class="card-body">
+          <h5 class="card-title">RoomTypes & cost</h5> 
+                     
+             <select [(ngModel)]="roomSelected" [ngModelOptions]="{standalone: true}" class="form-control">
+    
+               <option  *ngFor="let r of rooms" [ngValue]="r">{{r.type}} -- {{r.price}}</option>
+             </select>
+            </div>  
+      </div>
+    </div>
+  </div>
+  
+    <button id="dataSend" class="btn btn-light btn-lg" type="submit">Generate Bill</button>
+  
+
+</form>
+
+<div *ngIf="errorDate" class="container"><h5 style="color:red;">{{dateMessage}}</h5></div>
+
+<div class="container" *ngIf="dataSubmitted">
+  <h5>{{hotel.name}}</h5>
+  <h5>CheckIn:{{date1 | date:'yyyy-MM-dd'}}</h5>
+  <h5>CheckOut:{{date2| date:'yyyy-MM-dd'}}</h5>
+  <h5>Stay in Days:{{diffDays}}</h5>
+  <h5>TotlBill:{{cost}}Rs</h5>
+  <h5>RoomSelected:{{roomSelected.type}}</h5>
+  <button *ngIf="!errorDate" title="Once Booked cannot be undone kindly REVALUATE" class="btn btn-light btn-lg" (click)="PersistData()">Book Room</button>
+
+</div>

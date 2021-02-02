@@ -1,0 +1,38 @@
+<div class="container-fluid">
+
+    <h1>Welcome {{name}}</h1>
+
+</div>
+
+<!-- 
+Adding spinner until data is loaded -->
+
+<div class="text-center">
+    <div class="spinner-border" role="status" *ngIf="!hotels">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+
+
+<div class="container">
+    <table class="table">
+        
+        <thead>
+            <tr><th>Name</th>
+            <th>Location</th>
+
+            
+            </tr>
+        </thead>
+        <!-- java equivalent for the below code for(Todo todo: todos) -->
+    <tbody *ngFor="let t of hotels">
+        <tr>
+            <td>{{t.name|titlecase}}</td>
+            <td>{{t.location|titlecase}}</td>
+            <td><button class="btn btn-success" (click)="showBooking(t.hid)">show Bookings</button> </td> 
+            <!-- <td><a routerLink="/updateHotel"><button class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" >Update Hotel Data</button></a></td> -->
+        </tr>
+    </tbody> 
+    </table>
+    <button class="btn btn-danger" (click)="addHotel()">Add Hotel</button>
+    </div>

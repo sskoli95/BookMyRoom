@@ -1,0 +1,28 @@
+
+
+
+<table class="table">
+        
+    <thead>
+        <tr><th>BookingId</th>
+        <th>Checkin</th>
+        <th>Checkout</th>
+        <th>RoomType</th>
+        <th>AmountPaid</th>
+        
+        
+        </tr>
+    </thead>
+    <!-- java equivalent for the below code for(Todo todo: todos) -->
+<tbody *ngFor="let b of book">
+    <tr>
+        <td>{{b.roomId}}</td>
+        <td>{{b.checkin|date:'dd-MM-yyyy'}}</td>
+        <td>{{b.chekout|date:'dd-MM-yyyy'}}</td>
+        <td>{{b.roomType}}</td>
+        <td>{{b.totalPrice}}</td>
+        <td><button class="btn btn-success" title="Refund Not available" (click)="deleteBooking(b.roomId)" >CancelBookings</button> </td> 
+    </tr>
+</tbody> 
+
+

@@ -1,0 +1,27 @@
+<div class="container">
+
+    <h1>Welcome {{name}}</h1>
+    <br>
+
+    <div class="input-group mb-3">
+        <input type="text" class="form-control"[(ngModel)]="searchLocation" placeholder="Search By Location" >
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" (click)="searchByLocation()" type="button">Search</button>
+        </div>
+      </div>
+      
+      <br>
+
+
+    <div class="fluid-container" *ngFor="let t of hotels">
+    <div class="card" >
+        <h5 class="card-header">{{t.name}}</h5>
+        <div class="card-body">
+          <h5 class="card-title">{{t.location}}</h5>
+          <p class="card-text">{{t.description}}</p>
+          <button (click)="getHotelDetail(t.hid)" class="btn btn-primary">Know More</button>
+        </div>
+      </div>
+
+      <br>
+    </div>

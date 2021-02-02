@@ -1,0 +1,30 @@
+
+    <div class="alert alert-warning" *ngIf="name.invalid && name.dirty">
+        Kindly fill the details
+    </div>
+    <div class="container"><div class="alert alert-warning" *ngIf="invalidLogin">{{errMsg}}</div></div>
+<div class="container">
+    <a routerLink="/"><button class="btn btn-info">Customer Login</button></a>
+</div>
+    <div class="container" >
+        <h1>
+             Owner Login
+        </h1>
+        <form #LoginForm="ngForm" (ngSubmit)="ownerLogin()" ngNativeValidate >
+            <fieldset class="form-group">
+                <label>OwnerName</label>
+                <input #name="ngModel" type="text" class="form-control"  name="Username" required="required" [(ngModel)]="username" />
+            </fieldset>
+            <fieldset class="form-group">
+                <label>Owner Password</label>
+                <input  #pass="ngModel" type="password" class="form-control"  name="Password" required="required" [(ngModel)]="password"/>
+            </fieldset>
+
+            <fieldset class="form-group">
+                <input type="checkbox" required ="required"/> Human Verification
+            </fieldset>
+            <fieldset class="form-group">
+                 <div><button class="btn btn-success" type="submit">Login</button></div> 
+            </fieldset>
+        </form>
+    </div>

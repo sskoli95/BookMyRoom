@@ -1,0 +1,44 @@
+<h1>Bookings</h1>
+
+
+
+<div class="container">
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Search By UserName" aria-label="Search By UserName" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button">Search</button>
+        </div>
+      </div>
+    <table class="table">
+        
+        <thead>
+            <tr>
+            <th>Checkin</th>
+            <th>Checkout</th>
+            <th>RoomType</th>
+            <th>AmountPaid</th>
+            <th>email</th>
+            <th>userName</th>
+            
+            
+            </tr>
+        </thead>
+        <!-- java equivalent for the below code for(Todo todo: todos) -->
+    <tbody *ngFor="let b of book">
+        <tr>
+            
+            <td>{{b.checkin|date:'dd-MM-yyyy'}}</td>
+            <td>{{b.chekout|date:'dd-MM-yyyy'}}</td>
+            <td>{{b.roomType}}</td>
+            <td>{{b.totalPrice}}</td>
+            <td>{{b.cust.email}}</td>
+            <td>{{b.cust.userName}}</td>
+            <td><button class="btn btn-success" (click)="deleteBooking(b.roomId)" >Check Out User</button> </td> 
+            
+        </tr>
+    </tbody> 
+    </table>
+    
+
+      
+    </div>

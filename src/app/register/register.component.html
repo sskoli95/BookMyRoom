@@ -1,0 +1,46 @@
+
+<div class="container">
+    <div  *ngIf="userAddedSuccess" >
+        <h4>user Added Successfully kindly login</h4>
+    </div>
+    </div>
+<div class="container">
+<div  *ngIf="invalidLogin" class="alert alert-warning">{{errmsg}}</div>
+</div>
+
+<div class="container">
+    <a routerLink="/Register/owner"><button class="btn btn-primary">Owner Registration</button></a>
+
+</div>
+
+
+<div class="container">
+    <h1>Customer Registration Form</h1>
+    <form (ngSubmit)="registerCustomer()" ngNativeValidate>
+        <fieldset class="form-group">
+            <label>
+                Email*
+            </label>
+            <input #email="ngModel" type="email" class="form-control" name="custEamil" required="required" [(ngModel)]="userEmail" />
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Username*</label>
+            <input #username="ngModel" type="text" class="form-control" name="custUsername" required="required" [(ngModel)]="userNameCust"/>
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Password*</label>
+            <input #pass="ngModel" type="password" class="form-control" name="custPass" required = "required"[(ngModel)]="userPass" />
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Confirm Password*</label>
+            <input #repeatpass="ngModel" type="password" class="form-control" name="custRepeatPass" required="required" [(ngModel)]="userRepeatPass" />
+        </fieldset>
+        <fieldset class="form-group">
+            <input type="checkbox" required ="required"/> Human Verification
+        </fieldset>
+        <fieldset class="form-group">
+            <button class="btn btn-primary" type="submit">Register Me</button>
+        </fieldset>
+    </form>
+
+</div>

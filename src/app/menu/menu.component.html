@@ -1,0 +1,30 @@
+
+<nav class= "navbar navbar-expand-lg navbar-dark bg-dark" *ngIf="!statusOwner()" >
+    <div class="container-fluid" *ngIf="!statusOwner()">
+    <a routerLink="/" *ngIf="!status()" class="navbar-brand">BookMyRoom</a>
+    <a routerLink="Hotels/name" class="navbar-brand" *ngIf="status()">BookMyRoom</a>
+
+    <ul class="navbar-nav navbar-collapse justify-content-end" >
+        <li *ngIf="!status()" ><a routerLink="/Register" class="nav-link"> Register</a></li>
+        <li *ngIf="!status()"><a routerLink="/About us" class="nav-link"> About Us</a></li>
+        <li *ngIf="!status()"><a routerLink="/contact us" class="nav-link"> Contact Us</a></li>
+        
+        <!-- <form class="form-inline my-2 my-lg-0" *ngIf="status()">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search By Location">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form> -->
+    <li *ngIf="status()"><a routerLink="/profileCustDetails" class="nav-link">My Profile</a></li>
+    <li *ngIf="status()"><a routerLink="/bookings" class="nav-link">Current Bookings</a></li>
+    <li *ngIf="status()"><a routerLink="/Logout" class="nav-link">Logout</a></li>
+    </ul>
+</div>
+
+</nav>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" *ngIf="statusOwner()">
+
+  <a routerLink="/OwnerPanel"  class="navbar-brand">BookMyRoom</a>
+  <ul class="navbar-nav navbar-collapse justify-content-end">
+  <li class="nav-link"><a routerLink="/Logout" class="nav-link">Logout</a></li>
+</ul>
+</nav>
